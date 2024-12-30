@@ -12,7 +12,7 @@
 //    to provide memcpy().
 // 4. adding read_end_info() and creating an end_info structure.
 // 5. adding calls to png_set_*() transforms commonly used by browsers.
-
+#include <stdlib.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
