@@ -3166,12 +3166,14 @@ png_check_chunk_length(png_const_structrp png_ptr, png_uint_32 length)
    if (png_ptr->chunk_name == png_IDAT)
    {
       png_alloc_size_t idat_limit = PNG_UINT_31_MAX;
-      size_t row_factor =
+      size_t row_factor_l =
          (size_t)png_ptr->width
          * (size_t)png_ptr->channels
-         * (png_ptr->bit_depth > 8? 2: 1)
+         * (png_ptr->bit_depth > 8 ? 2 : 1)
          + 1
-         + (png_ptr->interlaced? 6: 0);
+         + (png_ptr->interlaced ? 6 : 0);
+
+      size_t row_factor = (png_uint_32)row_factor_l;
       if (png_ptr->height > PNG_UINT_32_MAX/row_factor)
          idat_limit = PNG_UINT_31_MAX;
       else
